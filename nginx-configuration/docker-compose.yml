@@ -1,0 +1,26 @@
+version: "3"
+services:
+  django-back:
+    build:
+      context: /home/aslan/REACT_DJANGO_NGINX/django-realworld-example-app
+      dockerfile: Dockerfile
+    image: django_image
+    container_name: django-back
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nginx_django
+    container_name: nginx_django
+    ports:
+      - 80:80
+    volumes:
+      - /etc/var/log:/var/log/nginx
+  react-front:
+    build:
+      context: /home/aslan/REACT_DJANGO_NGINX/realworld-example
+      dockerfile: Dockerfile
+    image: react-front
+    container_name: react_django
+     
+    
